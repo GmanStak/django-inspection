@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加巡检组</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1>设备添加</h1>
+      <form action = "/user/insadd/" method = "POST">
+          {% csrf_token %}
+         <div>
+            <label>巡检组:</label>
+            <input type = "text" name = "hostins" />
+         </div>
+         <div>
+            <input type = "submit" value = "提交" />
+            <a onclick="window.location.href='/user/info/'" class="button">返回设备列表</a>
+         </div>
+      </form>
+</body>
+</html>

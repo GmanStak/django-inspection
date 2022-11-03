@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备添加信息</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+      <table border = 1 class="gridtable">
+         <tr>
+{#               <th>设备ID</th>#}
+               <th>设备IP</th>
+               <th>设备名称</th>
+               <th>登陆用户</th>
+               <th>登陆密码</th>
+               <th>设备端口</th>
+               <th>设备类型</th>
+               <th>巡检组</th>
+               <th>操作</th>
+            </tr>
+         {% for key in hostlist %}
+            <tr>
+{#               <td> {{ key.id }}</td>#}
+               <td> {{ key.hostip }} </td>
+               <td> {{ key.hostname }} </td>
+               <td> {{ key.hostusername }} </td>
+               <td> {{ key.hostpassword }} </td>
+               <td> {{ key.hostport }} </td>
+               <td> {{ key.hostdevice }} </td>
+               <td> {{ key.hostinsGroup }} </td>
+               <td>
+               <a href="/user/{{ key.id }}/delete" class="btn btn-danger" >删除</a>
+               <a href="/user/{{ key.id }}/update" class="btn btn-danger" >修改</a>
+               </td>
+            </tr>
+         {% endfor %}
+      </table>
+      <div>
+          <a onclick="window.location.href='/user/hostAdd/'" class="button">设备新增</a>
+          <a onclick="window.location.href='/user/login/'" class="button">返回首页</a>
+      </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设备添加</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+   <h1>设备添加</h1>
+      <form action = "/user/hostAdd/" method = "POST">
+          {% csrf_token %}
+         <div>
+            <label>设备IP:</label>
+            <input type = "text" name = "hostip" />
+         </div>
+         <div>
+            <label>设备名称:</label>
+            <input type = "text" name = "hostname" />
+         </div>
+         <div>
+            <label>登陆用户:</label>
+            <input type = "text" name = "hostusername" />
+         </div>
+         <div>
+            <label>登陆密码:</label>
+            <input type ="text" name = "hostpassword" />
+         </div>
+          <div>
+            <label>设备端口:</label>
+            <input type ="text" name = "hostport" value="22"/>
+         </div>
+        <div>
+            <label>设备类型:</label>
+            <select name="device">
+                {% for dev in device_lsit %}
+                <option value="{{ dev.device }}">{{ dev.device }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label>巡检组:</label>
+
+            <select name="insGroup">
+                {% for insg in insGroup_list %}
+                <option value="{{ insg.InsGroupName }}">{{ insg.InsGroupName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+         <div>
+            <input type = "submit" value = "提交" />
+            <a onclick="window.location.href='/user/info/'" class="button">返回设备列表</a>
+         </div>
+      </form>
+</body>
+</html>

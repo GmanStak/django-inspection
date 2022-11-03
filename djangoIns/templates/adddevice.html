@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加设备类型</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1>设备添加</h1>
+      <form action = "/user/deviceadd/" method = "POST">
+          {% csrf_token %}
+         <div>
+            <label>设备类型:</label>
+            <input type = "text" name = "hostdevice" />
+         </div>
+         <div>
+            <input type = "submit" value = "提交" />
+            <a onclick="window.location.href='/user/info/'" class="button">返回设备列表</a>
+         </div>
+      </form>
+</body>
+</html>

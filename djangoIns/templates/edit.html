@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新设备信息</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+   <h1>设备更新</h1>
+      <form action = "" method = "POST">
+          {% csrf_token %}
+         <div>
+            <label>设备IP:</label>
+            <input type = "text" name = "hostip" value="{{ idinfo.hostip }}" />
+         </div>
+         <div>
+            <label>设备名称:</label>
+            <input type = "text" name = "hostname" value="{{ idinfo.hostname }}" />
+         </div>
+         <div>
+            <label>登陆用户:</label>
+            <input type = "text" name = "hostusername" value="{{ idinfo.hostusername }}" />
+         </div>
+         <div>
+            <label>登陆密码:</label>
+            <input type ="text" name = "hostpassword" value="{{ idinfo.hostpassword }}"/>
+         </div>
+         <div>
+            <label>设备端口:</label>
+            <input type ="text" name = "hostport" value="{{ idinfo.hostport }}"/>
+         </div>
+        <div>
+            <label>设备类型:</label>
+            <select name="device">
+                {% for dev in device_lsit %}
+                <option value="{{ dev.device }}">{{ dev.device }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label>巡检组:</label>
+            <select name="insGroup">
+                {% for insg in insGroup_list %}
+                <option value="{{ insg.InsGroupName }}">{{ insg.InsGroupName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+         <div>
+            <input type = "submit" value = "提交" />
+         </div>
+        </form>
+</body>
+</html>
